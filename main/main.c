@@ -9,30 +9,55 @@
 #include <string.h>
 #include "driver/gpio.h"
 #include "gpio_helper.h"
+#include "i2c_helper.h"
 
 static const char *TAG = "MAIN";
 
 #define LED_GPIO_PIN 2
-// forward declaration of function definitions
+#define i2c_GPIO_SDA 21
+#define i2c_GPIO_SCL 22
+
 void wifi_init_softap();
 void wifi_event_handler(void* arg, esp_event_base_t event_base, int32_t event_id, void* event_data);
 
 void wifi_init_task(void *pvParameters)
 {
     printf("initiating wifi task\n");
-    wifi_init_softap(); // Initialize Wi-Fi in SoftAP mode
-    vTaskDelete(NULL);  // Delete the task once it's done initializing Wi-Fi
+    wifi_init_softap();
+    vTaskDelete(NULL);
+}
+
+void i2c_task(void *pvParameters)
+{
+    printf("initiating i2c task\n");
+    i2c_master_init();
+
+    while(1){
+        //read_who_am_i();
+        send_start_only();
+        vTaskDelay(pdMS_TO_TICKS(500));
+    }
+    //vTaskDelete(NULL);
 }
 
 void app_main(void)
 {
     gpio_init(LED_GPIO_PIN);
+
+    /*gpio_init(i2c_GPIO_SDA);
+    gpio_init(i2c_GPIO_SCL);
+    static blink_config_t scl_config = { .pin = i2c_GPIO_SCL, .delay_ms = 200 };
+    static blink_config_t sda_config = { .pin = i2c_GPIO_SDA, .delay_ms = 100 };
+    xTaskCreate(gpio_blink_task,"blink_scl",2048,&scl_config,5,NULL);
+    xTaskCreate(gpio_blink_task,"blink_sda",2048,&sda_config,5,NULL);*/
+
     esp_log_level_set("*", ESP_LOG_INFO); 
     xTaskCreate(wifi_init_task, "wifi_init_task", 4096, NULL, 5, NULL);
+
+    xTaskCreate(i2c_task, "i2c_task", 2048, NULL, 5, NULL);
     
     while (1)
     {
-        //wait for flag from the app
         gpio_blink(LED_GPIO_PIN,100,1);
         gpio_blink(LED_GPIO_PIN,100,0);
     }

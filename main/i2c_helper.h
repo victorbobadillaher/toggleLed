@@ -1,6 +1,6 @@
 #pragma once
-
 #include "driver/i2c.h"
+
 
 #define I2C_MASTER_SCL_IO           22  
 #define I2C_MASTER_SDA_IO           21
@@ -10,3 +10,4 @@
 #define I2C_MASTER_RX_BUF_DISABLE   0
 
 void i2c_master_init(void);
+void send_start_only();

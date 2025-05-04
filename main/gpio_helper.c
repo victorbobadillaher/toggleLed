@@ -2,6 +2,7 @@
 #include "FreeRTOSConfig.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
+#include "gpio_helper.h"
 
 void gpio_blink(int GPIO_NUM,int blink_period, int activate)
 {
@@ -28,4 +29,15 @@ void gpio_init(int GPIO_NUM)
     };
     gpio_config(&io_conf);
     gpio_set_level(GPIO_NUM, 0);
+}
+
+void gpio_blink_task(void *pvParameters) {
+    blink_config_t *config = (blink_config_t *)pvParameters;
+
+    while (1) {
+        gpio_set_level(config->pin, 1);
+        vTaskDelay(pdMS_TO_TICKS(config->delay_ms));
+        gpio_set_level(config->pin, 0);
+        vTaskDelay(pdMS_TO_TICKS(config->delay_ms));
+    }
 }

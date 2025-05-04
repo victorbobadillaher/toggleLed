@@ -1,0 +1,223 @@
+[1/9] Performing build step for 'bootloader'
+[1/1] C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\victo\source\repos\toggleLed\build\bootloader\esp-idf\esptool_py && C:\Espressif\tools\python_env\idf5.4_py3.11_env\Scripts\python.exe C:/Users/victo/esp/v5.4.1/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x1000 C:/Users/victo/source/repos/toggleLed/build/bootloader/bootloader.bin"
+Bootloader binary size 0x6580 bytes. 0xa80 bytes (9%) free.
+[2/9] No install step for 'bootloader'
+[3/9] Completed 'bootloader'
+[4/9] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/i2c_helper.c.obj
+[5/9] Linking C static library esp-idf\main\libmain.a
+[6/9] Generating ld/sections.ld
+FAILED: esp-idf/esp_system/ld/sections.ld C:/Users/victo/source/repos/toggleLed/build/esp-idf/esp_system/ld/sections.ld 
+esp-idf\esp_system\CMakeFiles\sections.ld-d65dc84.bat 510a609955ec14ae
+Traceback (most recent call last):
+  File "C:\Users\victo\esp\v5.4.1\esp-idf\tools\ldgen\ldgen.py", line 176, in <module>
+    main()
+  File "C:\Users\victo\esp\v5.4.1\esp-idf\tools\ldgen\ldgen.py", line 143, in main
+    fragment_file = parse_fragment_file(fragment_file, sdkconfig)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\victo\esp\v5.4.1\esp-idf\tools\ldgen\ldgen\fragments.py", line 492, in parse_fragment_file
+    fragment_file = parser.parse_file(path, parse_all=True)[0]
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 2008, in parse_file
+    return self.parse_string(file_contents, parseAll)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 1207, in parse_string
+    loc, tokens = self._parse(instring, 0)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 853, in _parseNoCache
+    loc, tokens = self.parseImpl(instring, pre_loc, do_actions)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 5232, in parseImpl
+    return super().parseImpl(instring, loc, do_actions)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 5131, in parseImpl
+    loc, tokens = self_expr_parse(instring, loc, do_actions)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 853, in _parseNoCache
+    loc, tokens = self.parseImpl(instring, pre_loc, do_actions)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 4431, in parseImpl
+    return e._parse(instring, loc, do_actions)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 853, in _parseNoCache
+    loc, tokens = self.parseImpl(instring, pre_loc, do_actions)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 4703, in parseImpl
+    return self.expr._parse(instring, loc, do_actions, callPreParse=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 853, in _parseNoCache
+    loc, tokens = self.parseImpl(instring, pre_loc, do_actions)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 4197, in parseImpl
+    loc, exprtokens = e._parse(instring, loc, do_actions)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 853, in _parseNoCache
+    loc, tokens = self.parseImpl(instring, pre_loc, do_actions)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 4703, in parseImpl
+    return self.expr._parse(instring, loc, do_actions, callPreParse=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 853, in _parseNoCache
+    loc, tokens = self.parseImpl(instring, pre_loc, do_actions)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 4197, in parseImpl
+    loc, exprtokens = e._parse(instring, loc, do_actions)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 853, in _parseNoCache
+    loc, tokens = self.parseImpl(instring, pre_loc, do_actions)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 4836, in parseImpl
+    return (wrapper(block) + Optional(trailing_undent)).parseImpl(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 4175, in parseImpl
+    loc, resultlist = self.exprs[0]._parse(
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 853, in _parseNoCache
+    loc, tokens = self.parseImpl(instring, pre_loc, do_actions)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 4703, in parseImpl
+    return self.expr._parse(instring, loc, do_actions, callPreParse=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 853, in _parseNoCache
+    loc, tokens = self.parseImpl(instring, pre_loc, do_actions)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 5141, in parseImpl
+    loc, tmptokens = self_expr_parse(instring, preloc, do_actions)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 853, in _parseNoCache
+    loc, tokens = self.parseImpl(instring, pre_loc, do_actions)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 4197, in parseImpl
+    loc, exprtokens = e._parse(instring, loc, do_actions)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 853, in _parseNoCache
+    loc, tokens = self.parseImpl(instring, pre_loc, do_actions)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 5666, in parseImpl
+    return super().parseImpl(instring, loc, do_actions)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 4703, in parseImpl
+    return self.expr._parse(instring, loc, do_actions, callPreParse=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 853, in _parseNoCache
+    loc, tokens = self.parseImpl(instring, pre_loc, do_actions)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 4431, in parseImpl
+    return e._parse(instring, loc, do_actions)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 853, in _parseNoCache
+    loc, tokens = self.parseImpl(instring, pre_loc, do_actions)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 4703, in parseImpl
+    return self.expr._parse(instring, loc, do_actions, callPreParse=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 853, in _parseNoCache
+    loc, tokens = self.parseImpl(instring, pre_loc, do_actions)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 4175, in parseImpl
+    loc, resultlist = self.exprs[0]._parse(
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 853, in _parseNoCache
+    loc, tokens = self.parseImpl(instring, pre_loc, do_actions)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 4703, in parseImpl
+    return self.expr._parse(instring, loc, do_actions, callPreParse=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 853, in _parseNoCache
+    loc, tokens = self.parseImpl(instring, pre_loc, do_actions)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 4197, in parseImpl
+    loc, exprtokens = e._parse(instring, loc, do_actions)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 853, in _parseNoCache
+    loc, tokens = self.parseImpl(instring, pre_loc, do_actions)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 4836, in parseImpl
+    return (wrapper(block) + Optional(trailing_undent)).parseImpl(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 4175, in parseImpl
+    loc, resultlist = self.exprs[0]._parse(
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 853, in _parseNoCache
+    loc, tokens = self.parseImpl(instring, pre_loc, do_actions)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 4703, in parseImpl
+    return self.expr._parse(instring, loc, do_actions, callPreParse=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 853, in _parseNoCache
+    loc, tokens = self.parseImpl(instring, pre_loc, do_actions)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 5141, in parseImpl
+    loc, tmptokens = self_expr_parse(instring, preloc, do_actions)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 853, in _parseNoCache
+    loc, tokens = self.parseImpl(instring, pre_loc, do_actions)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 4197, in parseImpl
+    loc, exprtokens = e._parse(instring, loc, do_actions)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 853, in _parseNoCache
+    loc, tokens = self.parseImpl(instring, pre_loc, do_actions)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 5666, in parseImpl
+    return super().parseImpl(instring, loc, do_actions)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 4703, in parseImpl
+    return self.expr._parse(instring, loc, do_actions, callPreParse=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 853, in _parseNoCache
+    loc, tokens = self.parseImpl(instring, pre_loc, do_actions)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 4431, in parseImpl
+    return e._parse(instring, loc, do_actions)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 853, in _parseNoCache
+    loc, tokens = self.parseImpl(instring, pre_loc, do_actions)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 4175, in parseImpl
+    loc, resultlist = self.exprs[0]._parse(
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 853, in _parseNoCache
+    loc, tokens = self.parseImpl(instring, pre_loc, do_actions)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 4431, in parseImpl
+    return e._parse(instring, loc, do_actions)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 853, in _parseNoCache
+    loc, tokens = self.parseImpl(instring, pre_loc, do_actions)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 4197, in parseImpl
+    loc, exprtokens = e._parse(instring, loc, do_actions)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 853, in _parseNoCache
+    loc, tokens = self.parseImpl(instring, pre_loc, do_actions)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 5366, in parseImpl
+    loc, tokens = self_expr._parse(
+                  ^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 853, in _parseNoCache
+    loc, tokens = self.parseImpl(instring, pre_loc, do_actions)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 4197, in parseImpl
+    loc, exprtokens = e._parse(instring, loc, do_actions)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 847, in _parseNoCache
+    pre_loc = self.preParse(instring, loc)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 796, in preParse
+    loc = self._skipIgnorables(instring, loc)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 784, in _skipIgnorables
+    loc, dummy = ignore_fn(instring, loc)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 853, in _parseNoCache
+    loc, tokens = self.parseImpl(instring, pre_loc, do_actions)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 4703, in parseImpl
+    return self.expr._parse(instring, loc, do_actions, callPreParse=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Espressif\tools\python_env\idf5.4_py3.11_env\Lib\site-packages\pyparsing\core.py", line 853, in _parseNoCache
+    loc, tokens = self.parseImpl(instring, pre_loc, do_actions)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+MemoryError
+Batch file failed at line 3 with errorcode 1
+ninja: build stopped: subcommand failed.

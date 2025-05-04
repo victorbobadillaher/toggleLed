@@ -1,0 +1,82 @@
+[1/10] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/main.c.obj
+[2/10] Performing build step for 'bootloader'
+[1/1] C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\victo\source\repos\toggleLed\build\bootloader\esp-idf\esptool_py && C:\Espressif\tools\python_env\idf5.4_py3.11_env\Scripts\python.exe C:/Users/victo/esp/v5.4.1/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x1000 C:/Users/victo/source/repos/toggleLed/build/bootloader/bootloader.bin"
+Bootloader binary size 0x6580 bytes. 0xa80 bytes (9%) free.
+[3/10] Linking C static library esp-idf\main\libmain.a
+[4/10] No install step for 'bootloader'
+[5/10] Completed 'bootloader'
+[6/10] Generating ld/sections.ld
+[7/10] Linking CXX executable toggleLed.elf
+[8/10] Generating binary image from built executable
+esptool.py v4.8.1
+Creating esp32 image...
+Merged 2 ELF sections
+Successfully created esp32 image.
+Generated C:/Users/victo/source/repos/toggleLed/build/toggleLed.bin
+[9/10] C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\victo\source\repos\toggleLed\build\esp-idf\esptool_py && C:\Espressif\tools\python_env\idf5.4_py3.11_env\Scripts\python.exe C:/Users/victo/esp/v5.4.1/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 partition --type app C:/Users/victo/source/repos/toggleLed/build/partition_table/partition-table.bin C:/Users/victo/source/repos/toggleLed/build/toggleLed.bin"
+toggleLed.bin binary size 0xc8bf0 bytes. Smallest app partition is 0x100000 bytes. 0x37410 bytes (22%) free.
+[9/10] C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\victo\esp\v5.4.1\esp-idf\components\esptool_py && C:\Espressif\tools\tools\cmake\3.30.2\bin\cmake.exe -D IDF_PATH=C:/Users/victo/esp/v5.4.1/esp-idf -D SERIAL_TOOL=C:/Espressif/tools/python_env/idf5.4_py3.11_env/Scripts/python.exe;;C:/Users/victo/esp/v5.4.1/esp-idf/components/esptool_py/esptool/esptool.py;--chip;esp32 -D SERIAL_TOOL_ARGS=--before=default_reset;--after=hard_reset;write_flash;@flash_args -D WORKING_DIRECTORY=C:/Users/victo/source/repos/toggleLed/build -P C:/Users/victo/esp/v5.4.1/esp-idf/components/esptool_py/run_serial_tool.cmake"
+esptool.py --chip esp32 -p COM7 -b 460800 --before=default_reset --after=hard_reset write_flash --flash_mode dio --flash_freq 40m --flash_size 4MB 0x1000 bootloader/bootloader.bin 0x10000 toggleLed.bin 0x8000 partition_table/partition-table.bin
+esptool.py v4.8.1
+Serial port COM7
+Connecting......
+Chip is ESP32-D0WD-V3 (revision v3.1)
+Features: WiFi, BT, Dual Core, 240MHz, VRef calibration in efuse, Coding Scheme None
+Crystal is 40MHz
+MAC: e8:6b:ea:ca:b4:60
+Uploading stub...
+Running stub...
+Stub running...
+Changing baud rate to 460800
+Changed.
+Configuring flash size...
+Flash will be erased from 0x00001000 to 0x00007fff...
+Flash will be erased from 0x00010000 to 0x000d8fff...
+Flash will be erased from 0x00008000 to 0x00008fff...
+SHA digest in image updated
+Compressed 25984 bytes to 16376...
+Writing at 0x00001000... (100 %)
+Wrote 25984 bytes (16376 compressed) at 0x00001000 in 0.7 seconds (effective 304.5 kbit/s)...
+Hash of data verified.
+Compressed 822256 bytes to 516148...
+Writing at 0x00010000... (3 %)
+Writing at 0x0001cbbf... (6 %)
+Writing at 0x00025ee6... (9 %)
+Writing at 0x0003134d... (12 %)
+Writing at 0x00036ae6... (15 %)
+Writing at 0x0003ccd7... (18 %)
+Writing at 0x00042a54... (21 %)
+Writing at 0x000487cf... (25 %)
+Writing at 0x0004e553... (28 %)
+Writing at 0x00054927... (31 %)
+Writing at 0x00059aac... (34 %)
+Writing at 0x0005ee3e... (37 %)
+Writing at 0x0006456e... (40 %)
+Writing at 0x00069d2c... (43 %)
+Writing at 0x0006f051... (46 %)
+Writing at 0x0007462f... (50 %)
+Writing at 0x0007a4f5... (53 %)
+Writing at 0x0007fe87... (56 %)
+Writing at 0x00085a73... (59 %)
+Writing at 0x0008b729... (62 %)
+Writing at 0x000910d3... (65 %)
+Writing at 0x00096a92... (68 %)
+Writing at 0x0009c974... (71 %)
+Writing at 0x000a29ed... (75 %)
+Writing at 0x000a82f7... (78 %)
+Writing at 0x000b1cf0... (81 %)
+Writing at 0x000b8ee4... (84 %)
+Writing at 0x000bea40... (87 %)
+Writing at 0x000c4e58... (90 %)
+Writing at 0x000ca7d5... (93 %)
+Writing at 0x000d0b4c... (96 %)
+Writing at 0x000d5d98... (100 %)
+Wrote 822256 bytes (516148 compressed) at 0x00010000 in 12.9 seconds (effective 510.7 kbit/s)...
+Hash of data verified.
+Compressed 3072 bytes to 103...
+Writing at 0x00008000... (100 %)
+Wrote 3072 bytes (103 compressed) at 0x00008000 in 0.1 seconds (effective 256.3 kbit/s)...
+Hash of data verified.
+
+Leaving...
+Hard resetting via RTS pin...

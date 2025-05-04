@@ -1,7 +1,7 @@
 {
     "version":            "1.2",
     "project_name":       "toggleLed",
-    "project_version":    "1",
+    "project_version":    "e7d7749-dirty",
     "project_path":       "C:/Users/victo/source/repos/toggleLed",
     "idf_path":           "C:/Users/victo/esp/v5.4.1/esp-idf",
     "build_dir":          "C:/Users/victo/source/repos/toggleLed/build",
