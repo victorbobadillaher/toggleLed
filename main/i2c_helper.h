@@ -1,5 +1,10 @@
 #pragma once
-#include "driver/i2c.h"
+
+#include "driver/i2c_master.h"
+#include "driver/i2c_slave.h"
+#include<freertos/FreeRTOS.h>
+#include<freertos/task.h>
+#include "esp_log.h"
 
 
 #define I2C_MASTER_SCL_IO           22  
@@ -10,4 +15,6 @@
 #define I2C_MASTER_RX_BUF_DISABLE   0
 
 void i2c_master_init(void);
-void send_start_only();
+void i2c_send_test_transaction(void);
+void i2c_task_main(void *pvParameters);
+void check_address_task(void *arg);

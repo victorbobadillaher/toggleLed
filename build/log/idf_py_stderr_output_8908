@@ -1,0 +1,193 @@
+[0;33m--- Warning: GDB cannot open serial ports accessed as COMx[0m
+[0;33m--- Using \\.\COM7 instead...[0m
+[0;33m--- esp-idf-monitor 1.6.2 on \\.\COM7 115200[0m
+[0;33m--- Quit: Ctrl+] | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H[0m
+[0;33m--- 0x40080400: _init at ??:?
+[0m
+[0;33m--- 0x4008190d: panic_abort at C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_system/panic.c:454
+--- 0x40085aad: esp_system_abort at C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_system/port/esp_system_chip.c:87
+--- 0x4008bb95: __assert_func at C:/Users/victo/esp/v5.4.1/esp-idf/components/newlib/assert.c:80
+--- 0x4008630a: xQueueSemaphoreTake at C:/Users/victo/esp/v5.4.1/esp-idf/components/freertos/FreeRTOS-Kernel/queue.c:1709 (discriminator 1)
+--- 0x400da09a: i2c_master_probe at C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_driver_i2c/i2c_master.c:1251
+--- 0x400d6a39: check_address_task at C:/Users/victo/source/repos/toggleLed/main/main.c:42
+--- 0x400864f1: vPortTaskWrapper at C:/Users/victo/esp/v5.4.1/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c:139
+[0m
+[0;33m--- 0x40080400: _init at ??:?
+[0m
+[0;33m--- 0x4008190d: panic_abort at C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_system/panic.c:454
+--- 0x40085aad: esp_system_abort at C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_system/port/esp_system_chip.c:87
+--- 0x4008bb95: __assert_func at C:/Users/victo/esp/v5.4.1/esp-idf/components/newlib/assert.c:80
+--- 0x4008630a: xQueueSemaphoreTake at C:/Users/victo/esp/v5.4.1/esp-idf/components/freertos/FreeRTOS-Kernel/queue.c:1709 (discriminator 1)
+--- 0x400da09a: i2c_master_probe at C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_driver_i2c/i2c_master.c:1251
+--- 0x400d6a39: check_address_task at C:/Users/victo/source/repos/toggleLed/main/main.c:42
+--- 0x400864f1: vPortTaskWrapper at C:/Users/victo/esp/v5.4.1/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c:139
+[0m
+[0;33m--- 0x40080400: _init at ??:?
+[0m
+[0;33m--- 0x4008190d: panic_abort at C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_system/panic.c:454
+--- 0x40085aad: esp_system_abort at C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_system/port/esp_system_chip.c:87
+--- 0x4008bb95: __assert_func at C:/Users/victo/esp/v5.4.1/esp-idf/components/newlib/assert.c:80
+--- 0x4008630a: xQueueSemaphoreTake at C:/Users/victo/esp/v5.4.1/esp-idf/components/freertos/FreeRTOS-Kernel/queue.c:1709 (discriminator 1)
+--- 0x400da09a: i2c_master_probe at C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_driver_i2c/i2c_master.c:1251
+--- 0x400d6a39: check_address_task at C:/Users/victo/source/repos/toggleLed/main/main.c:42
+--- 0x400864f1: vPortTaskWrapper at C:/Users/victo/esp/v5.4.1/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c:139
+[0m
+[0;33m--- 0x40080400: _init at ??:?
+[0m
+[0;33m--- 0x4008190d: panic_abort at C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_system/panic.c:454
+--- 0x40085aad: esp_system_abort at C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_system/port/esp_system_chip.c:87
+--- 0x4008bb95: __assert_func at C:/Users/victo/esp/v5.4.1/esp-idf/components/newlib/assert.c:80
+--- 0x4008630a: xQueueSemaphoreTake at C:/Users/victo/esp/v5.4.1/esp-idf/components/freertos/FreeRTOS-Kernel/queue.c:1709 (discriminator 1)
+--- 0x400da09a: i2c_master_probe at C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_driver_i2c/i2c_master.c:1251
+--- 0x400d6a39: check_address_task at C:/Users/victo/source/repos/toggleLed/main/main.c:42
+--- 0x400864f1: vPortTaskWrapper at C:/Users/victo/esp/v5.4.1/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c:139
+[0m
+[0;33m--- 0x40080400: _init at ??:?
+[0m
+[0;33m--- 0x4008190d: panic_abort at C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_system/panic.c:454
+--- 0x40085aad: esp_system_abort at C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_system/port/esp_system_chip.c:87
+--- 0x4008bb95: __assert_func at C:/Users/victo/esp/v5.4.1/esp-idf/components/newlib/assert.c:80
+--- 0x4008630a: xQueueSemaphoreTake at C:/Users/victo/esp/v5.4.1/esp-idf/components/freertos/FreeRTOS-Kernel/queue.c:1709 (discriminator 1)
+--- 0x400da09a: i2c_master_probe at C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_driver_i2c/i2c_master.c:1251
+--- 0x400d6a39: check_address_task at C:/Users/victo/source/repos/toggleLed/main/main.c:42
+--- 0x400864f1: vPortTaskWrapper at C:/Users/victo/esp/v5.4.1/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c:139
+[0m
+[0;33m--- 0x40080400: _init at ??:?
+[0m
+[0;33m--- 0x4008190d: panic_abort at C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_system/panic.c:454
+--- 0x40085aad: esp_system_abort at C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_system/port/esp_system_chip.c:87
+--- 0x4008bb95: __assert_func at C:/Users/victo/esp/v5.4.1/esp-idf/components/newlib/assert.c:80
+--- 0x4008630a: xQueueSemaphoreTake at C:/Users/victo/esp/v5.4.1/esp-idf/components/freertos/FreeRTOS-Kernel/queue.c:1709 (discriminator 1)
+--- 0x400da09a: i2c_master_probe at C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_driver_i2c/i2c_master.c:1251
+--- 0x400d6a39: check_address_task at C:/Users/victo/source/repos/toggleLed/main/main.c:42
+--- 0x400864f1: vPortTaskWrapper at C:/Users/victo/esp/v5.4.1/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c:139
+[0m
+[0;33m--- 0x40080400: _init at ??:?
+[0m
+[0;33m--- 0x4008190d: panic_abort at C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_system/panic.c:454
+--- 0x40085aad: esp_system_abort at C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_system/port/esp_system_chip.c:87
+--- 0x4008bb95: __assert_func at C:/Users/victo/esp/v5.4.1/esp-idf/components/newlib/assert.c:80
+--- 0x4008630a: xQueueSemaphoreTake at C:/Users/victo/esp/v5.4.1/esp-idf/components/freertos/FreeRTOS-Kernel/queue.c:1709 (discriminator 1)
+--- 0x400da09a: i2c_master_probe at C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_driver_i2c/i2c_master.c:1251
+--- 0x400d6a39: check_address_task at C:/Users/victo/source/repos/toggleLed/main/main.c:42
+--- 0x400864f1: vPortTaskWrapper at C:/Users/victo/esp/v5.4.1/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c:139
+[0m
+[0;33m--- 0x40080400: _init at ??:?
+[0m
+[0;33m--- 0x4008190d: panic_abort at C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_system/panic.c:454
+--- 0x40085aad: esp_system_abort at C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_system/port/esp_system_chip.c:87
+--- 0x4008bb95: __assert_func at C:/Users/victo/esp/v5.4.1/esp-idf/components/newlib/assert.c:80
+--- 0x4008630a: xQueueSemaphoreTake at C:/Users/victo/esp/v5.4.1/esp-idf/components/freertos/FreeRTOS-Kernel/queue.c:1709 (discriminator 1)
+--- 0x400da09a: i2c_master_probe at C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_driver_i2c/i2c_master.c:1251
+--- 0x400d6a39: check_address_task at C:/Users/victo/source/repos/toggleLed/main/main.c:42
+--- 0x400864f1: vPortTaskWrapper at C:/Users/victo/esp/v5.4.1/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c:139
+[0m
+[0;33m--- 0x40080400: _init at ??:?
+[0m
+[0;33m--- 0x4008190d: panic_abort at C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_system/panic.c:454
+--- 0x40085aad: esp_system_abort at C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_system/port/esp_system_chip.c:87
+--- 0x4008bb95: __assert_func at C:/Users/victo/esp/v5.4.1/esp-idf/components/newlib/assert.c:80
+--- 0x4008630a: xQueueSemaphoreTake at C:/Users/victo/esp/v5.4.1/esp-idf/components/freertos/FreeRTOS-Kernel/queue.c:1709 (discriminator 1)
+--- 0x400da09a: i2c_master_probe at C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_driver_i2c/i2c_master.c:1251
+--- 0x400d6a39: check_address_task at C:/Users/victo/source/repos/toggleLed/main/main.c:42
+--- 0x400864f1: vPortTaskWrapper at C:/Users/victo/esp/v5.4.1/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c:139
+[0m
+[0;33m--- 0x40080400: _init at ??:?
+[0m
+[0;33m--- 0x4008190d: panic_abort at C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_system/panic.c:454
+--- 0x40085aad: esp_system_abort at C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_system/port/esp_system_chip.c:87
+--- 0x4008bb95: __assert_func at C:/Users/victo/esp/v5.4.1/esp-idf/components/newlib/assert.c:80
+--- 0x4008630a: xQueueSemaphoreTake at C:/Users/victo/esp/v5.4.1/esp-idf/components/freertos/FreeRTOS-Kernel/queue.c:1709 (discriminator 1)
+--- 0x400da09a: i2c_master_probe at C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_driver_i2c/i2c_master.c:1251
+--- 0x400d6a39: check_address_task at C:/Users/victo/source/repos/toggleLed/main/main.c:42
+--- 0x400864f1: vPortTaskWrapper at C:/Users/victo/esp/v5.4.1/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c:139
+[0m
+[0;33m--- 0x40080400: _init at ??:?
+[0m
+[0;33m--- 0x4008190d: panic_abort at C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_system/panic.c:454
+--- 0x40085aad: esp_system_abort at C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_system/port/esp_system_chip.c:87
+--- 0x4008bb95: __assert_func at C:/Users/victo/esp/v5.4.1/esp-idf/components/newlib/assert.c:80
+--- 0x4008630a: xQueueSemaphoreTake at C:/Users/victo/esp/v5.4.1/esp-idf/components/freertos/FreeRTOS-Kernel/queue.c:1709 (discriminator 1)
+--- 0x400da09a: i2c_master_probe at C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_driver_i2c/i2c_master.c:1251
+--- 0x400d6a39: check_address_task at C:/Users/victo/source/repos/toggleLed/main/main.c:42
+--- 0x400864f1: vPortTaskWrapper at C:/Users/victo/esp/v5.4.1/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c:139
+[0m
+[0;33m--- 0x40080400: _init at ??:?
+[0m
+[0;33m--- 0x4008190d: panic_abort at C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_system/panic.c:454
+--- 0x40085aad: esp_system_abort at C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_system/port/esp_system_chip.c:87
+--- 0x4008bb95: __assert_func at C:/Users/victo/esp/v5.4.1/esp-idf/components/newlib/assert.c:80
+--- 0x4008630a: xQueueSemaphoreTake at C:/Users/victo/esp/v5.4.1/esp-idf/components/freertos/FreeRTOS-Kernel/queue.c:1709 (discriminator 1)
+--- 0x400da09a: i2c_master_probe at C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_driver_i2c/i2c_master.c:1251
+--- 0x400d6a39: check_address_task at C:/Users/victo/source/repos/toggleLed/main/main.c:42
+--- 0x400864f1: vPortTaskWrapper at C:/Users/victo/esp/v5.4.1/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c:139
+[0m
+[0;33m--- 0x40080400: _init at ??:?
+[0m
+[0;33m--- 0x4008190d: panic_abort at C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_system/panic.c:454
+--- 0x40085aad: esp_system_abort at C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_system/port/esp_system_chip.c:87
+--- 0x4008bb95: __assert_func at C:/Users/victo/esp/v5.4.1/esp-idf/components/newlib/assert.c:80
+--- 0x4008630a: xQueueSemaphoreTake at C:/Users/victo/esp/v5.4.1/esp-idf/components/freertos/FreeRTOS-Kernel/queue.c:1709 (discriminator 1)
+--- 0x400da09a: i2c_master_probe at C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_driver_i2c/i2c_master.c:1251
+--- 0x400d6a39: check_address_task at C:/Users/victo/source/repos/toggleLed/main/main.c:42
+--- 0x400864f1: vPortTaskWrapper at C:/Users/victo/esp/v5.4.1/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c:139
+[0m
+[0;33m--- 0x40080400: _init at ??:?
+[0m
+[0;33m--- 0x4008190d: panic_abort at C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_system/panic.c:454
+--- 0x40085aad: esp_system_abort at C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_system/port/esp_system_chip.c:87
+--- 0x4008bb95: __assert_func at C:/Users/victo/esp/v5.4.1/esp-idf/components/newlib/assert.c:80
+--- 0x4008630a: xQueueSemaphoreTake at C:/Users/victo/esp/v5.4.1/esp-idf/components/freertos/FreeRTOS-Kernel/queue.c:1709 (discriminator 1)
+--- 0x400da09a: i2c_master_probe at C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_driver_i2c/i2c_master.c:1251
+--- 0x400d6a39: check_address_task at C:/Users/victo/source/repos/toggleLed/main/main.c:42
+--- 0x400864f1: vPortTaskWrapper at C:/Users/victo/esp/v5.4.1/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c:139
+[0m
+[0;33m--- 0x40080400: _init at ??:?
+[0m
+[0;33m--- 0x4008190d: panic_abort at C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_system/panic.c:454
+--- 0x40085aad: esp_system_abort at C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_system/port/esp_system_chip.c:87
+--- 0x4008bb95: __assert_func at C:/Users/victo/esp/v5.4.1/esp-idf/components/newlib/assert.c:80
+--- 0x4008630a: xQueueSemaphoreTake at C:/Users/victo/esp/v5.4.1/esp-idf/components/freertos/FreeRTOS-Kernel/queue.c:1709 (discriminator 1)
+--- 0x400da09a: i2c_master_probe at C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_driver_i2c/i2c_master.c:1251
+--- 0x400d6a39: check_address_task at C:/Users/victo/source/repos/toggleLed/main/main.c:42
+--- 0x400864f1: vPortTaskWrapper at C:/Users/victo/esp/v5.4.1/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c:139
+[0m
+[0;33m--- 0x40080400: _init at ??:?
+[0m
+[0;33m--- 0x4008190d: panic_abort at C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_system/panic.c:454
+--- 0x40085aad: esp_system_abort at C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_system/port/esp_system_chip.c:87
+--- 0x4008bb95: __assert_func at C:/Users/victo/esp/v5.4.1/esp-idf/components/newlib/assert.c:80
+--- 0x4008630a: xQueueSemaphoreTake at C:/Users/victo/esp/v5.4.1/esp-idf/components/freertos/FreeRTOS-Kernel/queue.c:1709 (discriminator 1)
+--- 0x400da09a: i2c_master_probe at C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_driver_i2c/i2c_master.c:1251
+--- 0x400d6a39: check_address_task at C:/Users/victo/source/repos/toggleLed/main/main.c:42
+--- 0x400864f1: vPortTaskWrapper at C:/Users/victo/esp/v5.4.1/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c:139
+[0m
+[0;33m--- 0x40080400: _init at ??:?
+[0m
+[0;33m--- 0x4008190d: panic_abort at C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_system/panic.c:454
+--- 0x40085aad: esp_system_abort at C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_system/port/esp_system_chip.c:87
+--- 0x4008bb95: __assert_func at C:/Users/victo/esp/v5.4.1/esp-idf/components/newlib/assert.c:80
+--- 0x4008630a: xQueueSemaphoreTake at C:/Users/victo/esp/v5.4.1/esp-idf/components/freertos/FreeRTOS-Kernel/queue.c:1709 (discriminator 1)
+--- 0x400da09a: i2c_master_probe at C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_driver_i2c/i2c_master.c:1251
+--- 0x400d6a39: check_address_task at C:/Users/victo/source/repos/toggleLed/main/main.c:42
+--- 0x400864f1: vPortTaskWrapper at C:/Users/victo/esp/v5.4.1/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c:139
+[0m
+[0;33m--- 0x40080400: _init at ??:?
+[0m
+[0;33m--- 0x4008190d: panic_abort at C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_system/panic.c:454
+--- 0x40085aad: esp_system_abort at C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_system/port/esp_system_chip.c:87
+--- 0x4008bb95: __assert_func at C:/Users/victo/esp/v5.4.1/esp-idf/components/newlib/assert.c:80
+--- 0x4008630a: xQueueSemaphoreTake at C:/Users/victo/esp/v5.4.1/esp-idf/components/freertos/FreeRTOS-Kernel/queue.c:1709 (discriminator 1)
+--- 0x400da09a: i2c_master_probe at C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_driver_i2c/i2c_master.c:1251
+--- 0x400d6a39: check_address_task at C:/Users/victo/source/repos/toggleLed/main/main.c:42
+--- 0x400864f1: vPortTaskWrapper at C:/Users/victo/esp/v5.4.1/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c:139
+[0m
+[0;33m--- 0x40080400: _init at ??:?
+[0m
+[0;33m--- 0x4008190d: panic_abort at C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_system/panic.c:454
+--- 0x40085aad: esp_system_abort at C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_system/port/esp_system_chip.c:87
+--- 0x4008bb95: __assert_func at C:/Users/victo/esp/v5.4.1/esp-idf/components/newlib/assert.c:80
+--- 0x4008630a: xQueueSemaphoreTake at C:/Users/victo/esp/v5.4.1/esp-idf/components/freertos/FreeRTOS-Kernel/queue.c:1709 (discriminator 1)
+--- 0x400da09a: i2c_master_probe at C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_driver_i2c/i2c_master.c:1251
+--- 0x400d6a39: check_address_task at C:/Users/victo/source/repos/toggleLed/main/main.c:42
+--- 0x400864f1: vPortTaskWrapper at C:/Users/victo

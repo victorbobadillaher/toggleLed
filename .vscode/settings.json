@@ -3,6 +3,7 @@
     "idf.flashType": "UART",
     "files.associations": {
         "esp_http_server.h": "c",
-        "gpio.h": "c"
+        "gpio.h": "c",
+        "task.h": "c"
     }
 }

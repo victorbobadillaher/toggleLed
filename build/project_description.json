@@ -1,7 +1,7 @@
 {
     "version":            "1.2",
     "project_name":       "toggleLed",
-    "project_version":    "e7d7749-dirty",
+    "project_version":    "9b73f61-dirty",
     "project_path":       "C:/Users/victo/source/repos/toggleLed",
     "idf_path":           "C:/Users/victo/esp/v5.4.1/esp-idf",
     "build_dir":          "C:/Users/victo/source/repos/toggleLed/build",
@@ -1190,12 +1190,12 @@
             "dir": "C:/Users/victo/source/repos/toggleLed/main",
             "type": "LIBRARY",
             "lib": "__idf_main",
-            "reqs": [],
+            "reqs": [ "esp_driver_gpio", "esp_driver_i2c", "esp_wifi", "nvs_flash", "esp_event", "esp_http_server", "esp_http_client" ],
             "priv_reqs": [],
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "file": "C:/Users/victo/source/repos/toggleLed/build/esp-idf/main/libmain.a",
-            "sources": [ "C:/Users/victo/source/repos/toggleLed/main/main.c", "C:/Users/victo/source/repos/toggleLed/main/websocket_server.c", "C:/Users/victo/source/repos/toggleLed/main/gpio_helper.c", "C:/Users/victo/source/repos/toggleLed/main/i2c_helper.c" ],
+            "sources": [ "C:/Users/victo/source/repos/toggleLed/main/main.c", "C:/Users/victo/source/repos/toggleLed/main/websocket_server.c", "C:/Users/victo/source/repos/toggleLed/main/gpio_helper.c", "C:/Users/victo/source/repos/toggleLed/main/i2c_helper.c", "C:/Users/victo/source/repos/toggleLed/main/wifi_helper.c" ],
             "include_dirs": [ "." ]
         },
         "mbedtls": {
@@ -2841,7 +2841,7 @@
             "prefix": "idf",
             "dir": "C:/Users/victo/source/repos/toggleLed/main",
             "lib": "__idf_main",
-            "reqs": [],
+            "reqs": [ "esp_driver_gpio", "esp_driver_i2c", "esp_wifi", "nvs_flash", "esp_event", "esp_http_server", "esp_http_client" ],
             "priv_reqs": [],
             "managed_reqs": [],
             "managed_priv_reqs": [],

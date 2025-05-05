@@ -1,164 +1,158 @@
 #include <stdio.h>
-#include<freertos/FreeRTOS.h>
-#include<freertos/task.h>
-#include "esp_wifi.h"
-#include "esp_event.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+#include "driver/i2c_master.h"
 #include "esp_log.h"
-#include "nvs_flash.h"
-#include "websocket_server.h" 
-#include <string.h>
-#include "driver/gpio.h"
+#include "sdkconfig.h"
 #include "gpio_helper.h"
-#include "i2c_helper.h"
+#include "wifi_helper.h"
 
-static const char *TAG = "MAIN";
+#define I2C_MASTER_TIMEOUT_MS 1000
+#define TAG "I2C_SCANNER"
 
-#define LED_GPIO_PIN 2
-#define i2c_GPIO_SDA 21
-#define i2c_GPIO_SCL 22
+#define LED_GPIO 2
 
-void wifi_init_softap();
-void wifi_event_handler(void* arg, esp_event_base_t event_base, int32_t event_id, void* event_data);
+TaskHandle_t CheckAddressHandle = NULL;
+
+// Function for initializing I2C bus
+static void i2c_master_init_bus(i2c_master_bus_handle_t *bus_handle)
+{
+    i2c_master_bus_config_t bus_config = {
+        .i2c_port = I2C_NUM_0,
+        .sda_io_num = GPIO_NUM_21,
+        .scl_io_num = GPIO_NUM_22,
+        .clk_source = I2C_CLK_SRC_DEFAULT,
+        .glitch_ignore_cnt = 7,
+        .flags.enable_internal_pullup = true,
+    };
+    ESP_ERROR_CHECK(i2c_new_master_bus(&bus_config, bus_handle));
+}
+
+// Task to scan all I2C addresses
+void check_address_task(void *arg)
+{
+    i2c_master_bus_handle_t bus_handle = (i2c_master_bus_handle_t)arg;
+    while (1)
+    {
+        for (uint8_t addr = 0x03; addr < 0x78; addr++)
+        {
+            esp_err_t err = i2c_master_probe(bus_handle, addr, I2C_MASTER_TIMEOUT_MS);
+            if (err == ESP_OK)
+            {
+                ESP_LOGI(TAG, "Found I2C device at address: 0x%02X", addr);
+            }
+        }
+        ESP_LOGI(TAG, "I2C scan complete");
+        vTaskDelay(pdMS_TO_TICKS(1000));
+    }
+}
+
+esp_err_t i2c_read_register(i2c_master_bus_handle_t bus_handle, uint8_t reg_addr, uint8_t *data_out,uint16_t DEV_ADDR)
+{
+    i2c_master_dev_handle_t dev_handle;
+    i2c_device_config_t dev_cfg = {
+        .dev_addr_length = I2C_ADDR_BIT_LEN_7,
+        .device_address = DEV_ADDR,
+        .scl_speed_hz = 100000,
+    };
+
+    // Attach device to bus (temporary handle)
+    ESP_ERROR_CHECK(i2c_master_bus_add_device(bus_handle, &dev_cfg, &dev_handle));
+
+    // Write the register address we want to read
+    ESP_ERROR_CHECK(i2c_master_transmit(dev_handle, &reg_addr, 1, -1));
+
+    // Read the data into data_out
+    ESP_ERROR_CHECK(i2c_master_receive(dev_handle, data_out, 1, -1));
+
+    // Clean up the handle if you don't plan to reuse it
+    ESP_ERROR_CHECK(i2c_master_bus_rm_device(dev_handle));
+
+    return ESP_OK;
+}
+
+
+void mpu6050_read_task(void *params)
+{
+    struct mpu_task_params {
+        i2c_master_bus_handle_t bus;
+        uint8_t dev_addr;
+        uint16_t sample_rate_hz;
+    };
+
+    struct mpu_task_params *cfg = (struct mpu_task_params *)params;
+
+    const uint8_t ACCEL_START_REG = 0x3B;
+    uint8_t raw_data[6];
+    int16_t accel_x, accel_y, accel_z;
+
+    TickType_t delay_ticks = pdMS_TO_TICKS(1000 / cfg->sample_rate_hz);
+
+    while (1)
+    {
+        i2c_master_dev_handle_t dev_handle;
+
+        i2c_device_config_t dev_cfg = {
+            .dev_addr_length = I2C_ADDR_BIT_LEN_7,
+            .device_address = cfg->dev_addr,
+            .scl_speed_hz = 100000,
+        };
+
+        ESP_ERROR_CHECK(i2c_master_bus_add_device(cfg->bus, &dev_cfg, &dev_handle));
+
+        // Tell the sensor we want to read from 0x3B
+        ESP_ERROR_CHECK(i2c_master_transmit(dev_handle, &ACCEL_START_REG, 1, -1));
+
+        // Read 6 bytes: XH, XL, YH, YL, ZH, ZL
+        ESP_ERROR_CHECK(i2c_master_receive(dev_handle, raw_data, 6, -1));
+
+        // Parse 16-bit signed values
+        accel_x = (raw_data[0] << 8) | raw_data[1];
+        accel_y = (raw_data[2] << 8) | raw_data[3];
+        accel_z = (raw_data[4] << 8) | raw_data[5];
+
+        printf("Accel X: %d\tY: %d\tZ: %d\n", accel_x, accel_y, accel_z);
+
+        ESP_ERROR_CHECK(i2c_master_bus_rm_device(dev_handle));
+
+        vTaskDelay(delay_ticks);
+    }
+}
 
 void wifi_init_task(void *pvParameters)
 {
-    printf("initiating wifi task\n");
     wifi_init_softap();
     vTaskDelete(NULL);
 }
 
-void i2c_task(void *pvParameters)
-{
-    printf("initiating i2c task\n");
-    i2c_master_init();
-
-    while(1){
-        //read_who_am_i();
-        send_start_only();
-        vTaskDelay(pdMS_TO_TICKS(500));
-    }
-    //vTaskDelete(NULL);
-}
-
 void app_main(void)
 {
-    gpio_init(LED_GPIO_PIN);
-
-    /*gpio_init(i2c_GPIO_SDA);
-    gpio_init(i2c_GPIO_SCL);
-    static blink_config_t scl_config = { .pin = i2c_GPIO_SCL, .delay_ms = 200 };
-    static blink_config_t sda_config = { .pin = i2c_GPIO_SDA, .delay_ms = 100 };
-    xTaskCreate(gpio_blink_task,"blink_scl",2048,&scl_config,5,NULL);
-    xTaskCreate(gpio_blink_task,"blink_sda",2048,&sda_config,5,NULL);*/
 
     esp_log_level_set("*", ESP_LOG_INFO); 
     xTaskCreate(wifi_init_task, "wifi_init_task", 4096, NULL, 5, NULL);
 
-    xTaskCreate(i2c_task, "i2c_task", 2048, NULL, 5, NULL);
+    i2c_master_bus_handle_t bus_handle;
+    i2c_master_init_bus(&bus_handle);
+
+    xTaskCreatePinnedToCore(check_address_task, "Scan I2C", 4096, (void *)bus_handle, 10, &CheckAddressHandle, 1);
     
-    while (1)
+    static struct mpu_task_params {
+        i2c_master_bus_handle_t bus;
+        uint8_t dev_addr;
+        uint16_t sample_rate_hz;
+    } mpu_cfg;
+    
+    mpu_cfg.bus = bus_handle;
+    mpu_cfg.dev_addr = 0x68;  // your device address
+    mpu_cfg.sample_rate_hz = 100;
+
+    xTaskCreatePinnedToCore(mpu6050_read_task, "MPU6050 Reader", 4096, &mpu_cfg, 5, NULL, 1);
+
+    gpio_init(LED_GPIO);
+
+    while(1)
     {
-        gpio_blink(LED_GPIO_PIN,100,1);
-        gpio_blink(LED_GPIO_PIN,100,0);
-    }
-}
-
-
-void wifi_init_softap()
-{
-
-    printf("Entering soft ap\n");
-
-    ESP_ERROR_CHECK(nvs_flash_init());
-    ESP_ERROR_CHECK(esp_netif_init());
-    ESP_ERROR_CHECK(esp_event_loop_create_default());
-
-    esp_netif_create_default_wifi_ap();
-    wifi_init_config_t config = WIFI_INIT_CONFIG_DEFAULT();
-    ESP_ERROR_CHECK(esp_wifi_init(&config));
-
-    ESP_ERROR_CHECK(esp_event_handler_register(
-        WIFI_EVENT,ESP_EVENT_ANY_ID,
-        &wifi_event_handler, 
-        NULL)
-    ); 
-
-    printf("registering event handler\n");
-
-    wifi_config_t wifi_config = {
-        .ap = {
-            .ssid = "ESP32-AP",
-            .ssid_len = strlen("ESP32-AP"),
-            .channel = 1,
-            .password = "12345678",
-            .max_connection = 4,
-            .authmode = WIFI_AUTH_WPA2_PSK,
-        },   
-    };
-
-    if(strlen((char*)wifi_config.ap.password) == 0)
-    {
-        printf("if no pwd if\n");
-        wifi_config.ap.authmode = WIFI_AUTH_OPEN;
-    }
-
-    ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_AP));
-    ESP_ERROR_CHECK(esp_wifi_set_config(WIFI_IF_AP, &wifi_config)); // sets ap configs
-    ESP_ERROR_CHECK(esp_wifi_start()); //starts the wifi network
-
-    ESP_LOGI(TAG, "Connect to ESP32_SERVER, pwd: 123456789");
-}
-
-void wifi_event_handler(void* arg, esp_event_base_t event_base, int32_t event_id, void* event_data)
-{
-    printf("entering the wifi event handler\n");
-    if(event_base == WIFI_EVENT && event_id == WIFI_EVENT_AP_START)
-    {
-        websocket_server_start();
-        printf("websocket server started\n");
-
-        int response = websocket_server_is_connected();
-
-        printf("WS connected?: %d\n", response);
-
-        if(websocket_server_is_connected())
-        {
-            //printf("websocket client id connected\n");
-            ESP_LOGI(TAG, "websocket client connected");
-        }
-
-        
-        else
-        {
-            //printf("websocket client not connected\n");
-            ESP_LOGI(TAG, "websocket client not connected");
-        }
-
-
-        esp_netif_ip_info_t ip_info;
-        esp_netif_t * netif = esp_netif_get_handle_from_ifkey("WIFI_AP_DEF");
-
-        if (netif && esp_netif_get_ip_info(netif, &ip_info) == ESP_OK) {
-            //printf("nET IF IS OK i am in the eifi event handler\n");
-
-            ESP_LOGI(TAG, "SoftAP IP Address: " IPSTR, IP2STR(&ip_info.ip));
-        }
-       ESP_LOGI(TAG, "SoftAP started");
-    }
-    else if(event_base == WIFI_EVENT && event_id == WIFI_EVENT_AP_STACONNECTED)
-    {
-        //printf("connected \n");
-        ESP_LOGI(TAG, "Station connected to SoftAP");
-    }
-    else if(event_base == WIFI_EVENT && event_id == WIFI_EVENT_AP_STADISCONNECTED)
-    {
-        //printf("disconnected\n");
-        ESP_LOGI(TAG, "Station disconnected from SoftAP");
-    }
-
-    else
-    {
-        printf("unkwonwn event \n");
-        //ESP_LOGI(TAG, "unknown event: %ld", event_id);
+        gpio_blink(LED_GPIO, 100, 1);
+        gpio_blink(LED_GPIO, 100, 0);
     }
 }

@@ -16,8 +16,7 @@ void websocket_server_send(const char *message);
 
 void websocket_server_start(void)
 {
-    printf("entering the ws server start function\n");
-    httpd_config_t config = HTTPD_DEFAULT_CONFIG();
+     httpd_config_t config = HTTPD_DEFAULT_CONFIG();
 
     esp_err_t ret = httpd_start(&server_handle, &config);
     
@@ -67,8 +66,6 @@ void websocket_server_send(const char *message)
 
 static esp_err_t websocket_handler(httpd_req_t *req)
 {
-    printf("entering the ws handler\n");
-
     ESP_LOGI(TAG, "📥 WebSocket request received");
     ESP_LOGI(TAG, "🧭 URI: %s", req->uri);
     ESP_LOGI(TAG, "🛠 Method: %d", req->method);
@@ -78,7 +75,6 @@ static esp_err_t websocket_handler(httpd_req_t *req)
         printf("Handshake done, new WebSocket connection\n");
         ESP_LOGI(TAG, "Handshake done, new WebSocket connection");
         client_fd = httpd_req_to_sockfd(req);
-        printf("client_fd: %d\n", client_fd);
         return ESP_OK;
     }
 
@@ -117,19 +113,10 @@ static esp_err_t websocket_handler(httpd_req_t *req)
 
         buf[ws_pkt.len] = '\0';  // Null-terminate
 
-        printf("buf is: %s\n", buf);
-        printf("len is: %d\n", ws_pkt.len);
-        printf("strcmp is: %d\n", strncmp(buf, "on", 2));
-
         if (ws_pkt.len == 2 && strncmp(buf, "on", 2) == 0)
         {
-            printf("entering send method for 'on'");
             websocket_server_send("Esp says: ✅ Button was clicked!");
             gpio_init(GPIO_NUM);
-            gpio_blink(GPIO_NUM,1000,1);
-            gpio_blink(GPIO_NUM,1000,0);
-            gpio_blink(GPIO_NUM,1000,1);
-            gpio_blink(GPIO_NUM,1000,0);
             gpio_blink(GPIO_NUM,1000,1);
             gpio_blink(GPIO_NUM,1000,0);
         }
@@ -137,7 +124,5 @@ static esp_err_t websocket_handler(httpd_req_t *req)
         ESP_LOGI(TAG, "Received message: %s", buf);
         free(buf);
     }
-
-
     return ESP_OK;
 }
