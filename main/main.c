@@ -6,6 +6,7 @@
 #include "sdkconfig.h"
 #include "gpio_helper.h"
 #include "wifi_helper.h"
+//#include "esp_adc/adc_oneshot.h"
 
 #define I2C_MASTER_TIMEOUT_MS 1000
 #define TAG "I2C_SCANNER"

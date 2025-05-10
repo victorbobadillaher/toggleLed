@@ -4,6 +4,7 @@
     "files.associations": {
         "esp_http_server.h": "c",
         "gpio.h": "c",
-        "task.h": "c"
+        "task.h": "c",
+        "analog_reader.h": "c"
     }
 }
