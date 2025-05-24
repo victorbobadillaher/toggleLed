@@ -6,7 +6,7 @@
 #include "sdkconfig.h"
 #include "gpio_helper.h"
 #include "wifi_helper.h"
-//#include "esp_adc/adc_oneshot.h"
+
 
 #define I2C_MASTER_TIMEOUT_MS 1000
 #define TAG "I2C_SCANNER"
@@ -40,6 +40,7 @@ void check_address_task(void *arg)
             esp_err_t err = i2c_master_probe(bus_handle, addr, I2C_MASTER_TIMEOUT_MS);
             if (err == ESP_OK)
             {
+                
                 ESP_LOGI(TAG, "Found I2C device at address: 0x%02X", addr);
             }
         }
