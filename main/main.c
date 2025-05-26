@@ -130,6 +130,10 @@ void wifi_init_task(void *pvParameters)
 void app_main(void)
 {
 
+    ESP_ERROR_CHECK(nvs_flash_init());
+    ESP_ERROR_CHECK(esp_netif_init());
+    ESP_ERROR_CHECK(esp_event_loop_create_default());
+
     esp_log_level_set("*", ESP_LOG_INFO); 
     xTaskCreate(wifi_init_task, "wifi_init_task", 4096, NULL, 5, NULL);
 

@@ -1,7 +1,3 @@
-
-
-
-
 void mpu6050_read_task(void *params)
 {
     struct mpu_task_params {

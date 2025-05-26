@@ -1,7 +1,7 @@
 {
     "version":            "1.2",
     "project_name":       "toggleLed",
-    "project_version":    "4eb06be-dirty",
+    "project_version":    "7e21198-dirty",
     "project_path":       "C:/Users/victo/source/repos/toggleLed",
     "idf_path":           "C:/Users/victo/esp/v5.4.1/esp-idf",
     "build_dir":          "C:/Users/victo/source/repos/toggleLed/build",
@@ -1195,8 +1195,8 @@
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "file": "C:/Users/victo/source/repos/toggleLed/build/esp-idf/main/libmain.a",
-            "sources": [ "C:/Users/victo/source/repos/toggleLed/main/main.c", "C:/Users/victo/source/repos/toggleLed/main/gpio_helper.c", "C:/Users/victo/source/repos/toggleLed/main/i2c_helper.c", "C:/Users/victo/source/repos/toggleLed/main/sensor_helper.c", "C:/Users/victo/source/repos/toggleLed/main/websocket_server.c", "C:/Users/victo/source/repos/toggleLed/main/wifi_helper.c" ],
-            "include_dirs": [ "." ]
+            "sources": [ "C:/Users/victo/source/repos/toggleLed/main/main.c", "C:/Users/victo/source/repos/toggleLed/main/comms/serial/i2c_helper.c", "C:/Users/victo/source/repos/toggleLed/main/comms/web/websocket/websocket_server.c", "C:/Users/victo/source/repos/toggleLed/main/hardware_manipulation/gpio/gpio_helper.c", "C:/Users/victo/source/repos/toggleLed/main/hardware_manipulation/wifi/wifi_helper.c", "C:/Users/victo/source/repos/toggleLed/main/hardware_manipulation/analog_reader.c", "C:/Users/victo/source/repos/toggleLed/main/sensors/sensor_helper.c" ],
+            "include_dirs": [ ".", "comms/serial", "comms/web/websocket", "hardware_manipulation", "hardware_manipulation/gpio", "hardware_manipulation/wifi", "imu", "sensors", "monitor", "controls", "storage" ]
         },
         "mbedtls": {
             "alias": "idf::mbedtls",
@@ -2845,7 +2845,7 @@
             "priv_reqs": [],
             "managed_reqs": [],
             "managed_priv_reqs": [],
-            "include_dirs": [ "." ]
+            "include_dirs": [ ".", "comms/serial", "comms/web/websocket", "hardware_manipulation", "hardware_manipulation/gpio", "hardware_manipulation/wifi", "imu", "sensors", "monitor", "controls", "storage" ]
         }
     },
     "debug_prefix_map_gdbinit": "",
