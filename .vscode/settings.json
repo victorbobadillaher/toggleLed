@@ -5,6 +5,7 @@
         "esp_http_server.h": "c",
         "gpio.h": "c",
         "task.h": "c",
-        "analog_reader.h": "c"
+        "analog_reader.h": "c",
+        "common_headers.h": "c"
     }
 }

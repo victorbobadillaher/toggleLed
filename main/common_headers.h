@@ -19,11 +19,17 @@
 #include "esp_wifi.h"
 #include "esp_event.h"
 #include "esp_netif.h"
+#include "nvs_flash.h"
+#include "esp_system.h"
+#include "esp_http_server.h"
 #include "lwip/ip_addr.h"   // For IPSTR/IP2STR
+#include "sdkconfig.h"
 
 // Custom includes
 #include "wifi_manager.h"
-#include "websocket_server.h"
+#include "websocket_manager.h"
 #include "imu_driver.h"
 
-#include "app_config.h"
+//commnications includes
+#include "driver/i2c_master.h"
+

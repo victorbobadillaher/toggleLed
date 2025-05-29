@@ -10,6 +10,5 @@ idf_component_register(
         "freertos"      
         "nvs_flash"     
         "main"
-    PRIV_REQUIRES
-        "esp_log"       # Used internally, but not exposed to other components
+        "log"
 )

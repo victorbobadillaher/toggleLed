@@ -549,6 +549,16 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
+  include("C:/Users/victo/source/repos/toggleLed/build/esp-idf/wifi_manager/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("C:/Users/victo/source/repos/toggleLed/build/esp-idf/websocket_manager/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
   include("C:/Users/victo/source/repos/toggleLed/build/esp-idf/main/cmake_install.cmake")
 endif()
 

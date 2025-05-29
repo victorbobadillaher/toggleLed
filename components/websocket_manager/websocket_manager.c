@@ -1,19 +1,10 @@
 #include "websocket_manager.h"
 #include "common_headers.h"
-#include "esp_http_server,h"
 
 static const char *TAG  = "WS_MANAGER";
 static httpd_handle_t server_handle = NULL;
 
 int client_fd = -1;
-
-
-//task to handle what? 
-// startup function to set up the websocket server as parent to the http_startup function y
-// methods for handling incoming messages 
-// methods for sending messages
-// methods to verify clients connection 
-// solve the multiclient problem at the end
 
 esp_err_t websocket_manager_internal_start(void){
     //1) define http server configuration
@@ -31,7 +22,7 @@ esp_err_t websocket_manager_internal_start(void){
     //3. Register the WebSocket URI handler
     httpd_uri_t ws_uri = {
         .uri = "/ws",
-        .method = HTTP_GET,//what are we getting here?
+        .method = HTTP_GET,
         .handler  = websocket_manager_event_handler,
         .user_ctx = NULL, //user data passed to the handler, unsure on utility
         .is_websocket = true
@@ -50,9 +41,8 @@ static esp_err_t websocket_manager_event_handler(http_req_t *req)
     {
         return handle_ws_handshake(req);
     }
-    else{
-        return handle_ws_data_frame(req);
-    }
+    
+    return handle_ws_data_frame(req);
 }
 
 //is the task needed if the event handler can just execute functions? yes why? explain later
@@ -87,17 +77,35 @@ static esp_err_t handle_ws_handshake(http_req_t *req)
 
 }
 
-typedef enum{
-    CMD_UNKNOWN = 0,
-    CMD_LIGHT_ON,
-    CMD_LIGHT_OFF,
-    CMD_STATUS_REQUEST,
-}ws_command_id_t;
-
-
-static esp_err_t handle_ws_data_frame(http_rew_t *req)
+static ws_command_id_t map_ws_command(char *cmd_str)
 {
-    
+    if (cmd_str == NULL) return CMD_UNKNOWN;
+    if (strcmp(cmd_str, "on") == 0) return CMD_LIGHT_ON;
+    if (strcmp(cmd_str, "off") == 0) return CMD_LIGHT_OFF;
+    if (strcmp(cmd_str, "status") == 0) return CMD_STATUS_REQUEST;
+    return CMD_UNKNOWN;
+}
 
+static esp_err_t handle_ws_data_frame(http_req_t *req)
+{
+    ws_command_id_t data = map_ws_command(req ->data);
 
+    switch(data)
+    {
+        case CMD_UNKNOWN:
+
+            break;
+        case CMD_LIGHT_ON:
+
+            break;
+        case CMD_LIGHT_OFF:
+        
+            break;
+        case CMD_STATUS_REQUEST:
+
+            break;
+        default:
+
+            break;
+    }
 }

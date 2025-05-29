@@ -7,6 +7,8 @@ idf_component_register(
         "esp_netif"
         "freertos"
         "nvs_flash"
-        "esp_log" 
+        "log" 
+        "wifi_manager"
+        "websocket_manager"
 )
 
