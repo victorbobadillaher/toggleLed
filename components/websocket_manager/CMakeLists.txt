@@ -13,7 +13,6 @@ idf_component_register(
         "freertos"          # For vTaskDelay, pdMS_TO_TICKS, xTaskCreate
         "esp_system"        # For general system functions like esp_err_t, ESP_OK, esp_err_to_name
         "lwip"              # Underlying TCP/IP stack; often implicitly brought in by others
-        "cjson"             # <--- Make sure this is present for JSON operations
         "esp_wifi"
         "nvs_flash"
         "esp_event"

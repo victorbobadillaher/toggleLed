@@ -47,8 +47,9 @@ esp_err_t wifi_manager_init_softapp(EventGroupHandle_t event_group_handle)
     };
 
     // if password is empty, set the auth mode to open
-    if(strlen((char*) wifi_settings_config.ap-password) == 0))
+    if(strlen((char*) wifi_settings_config.ap.password) == 0)
     {
+    
         wifi_settings_config.ap.authmode = WIFI_AITH_OPEN;
     }
 
@@ -62,7 +63,7 @@ esp_err_t wifi_manager_init_softapp(EventGroupHandle_t event_group_handle)
     return ESP_OK;
 }
 
-static void wifi_manager_event_handler(void *arg, event_base_t event_base,int32 event_id, void *event_data)
+static void wifi_manager_event_handler(void *arg, esp_event_base_t event_base,int32_t event_id, void *event_data)
 {
     if(event_base == WIFI_EVENT)
     {
@@ -81,21 +82,20 @@ static void wifi_manager_event_handler(void *arg, event_base_t event_base,int32 
                     ESP_LOGI(TAG, "SoftAP IP Address: " IPSTR, IP2STR(&ip_info.ip));
                 }
 
-                websocket_server_start();
+                websocket_manager_internal_start();
                 ESP_LOGI(TAG, "WebSocket server instructed to start.");
                 break;
 
             case WIFI_EVENT_AP_STACONNECTED:
                 wifi_event_ap_staconnected_t* event = (wifi_event_ap_staconnected_t*) event_data;
-                ESP_LOGI(TAG, "Station connected to SoftAP: MAC " MACSTR ", AID=%d",
-                         MAC2STR(event->mac), event->aid);
+
+                ESP_LOGI(TAG, "Station connected to SoftAP: MAC ");
                 break;
 
             case WIFI_EVENT_AP_STADISCONNECTED:
 
                 wifi_event_ap_stadisconnected_t* event = (wifi_event_ap_stadisconnected_t*) event_data;
-                ESP_LOGI(TAG, "Station disconnected from SoftAP: MAC " MACSTR ", AID=%d",
-                         MAC2STR(event->mac), event->aid);
+                ESP_LOGI(TAG, "Station disconnected from SoftAP: MAC ",MAC2STR(event->mac), event->aid);
                 break;
 
             default:
@@ -111,12 +111,12 @@ static void wifi_manager_task(void *pvParameters)
 
     if(wifi_event_group == NULL)
     {
-        ESP_LOGI("Esp wifi handle is empty: ");
+        ESP_LOGI(TAG,"Esp wifi handle is empty: ");
         //if tasks cant run then delete
         vTaskDelete(NULL);
     }
     // set up configs in the task once
-    esp_err_t err = wifi_manager_init_softapp();
+    esp_err_t err = wifi_manager_init_softapp(wifi_event_group);
 
     if(err != ESP_OK)
     {

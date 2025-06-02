@@ -15,7 +15,6 @@
 
 // ESP-IDF common includes
 #include "esp_log.h"
-#include "esp_err.h"
 #include "esp_wifi.h"
 #include "esp_event.h"
 #include "esp_netif.h"
@@ -28,7 +27,6 @@
 // Custom includes
 #include "wifi_manager.h"
 #include "websocket_manager.h"
-#include "imu_driver.h"
 
 //commnications includes
 #include "driver/i2c_master.h"

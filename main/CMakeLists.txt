@@ -10,5 +10,10 @@ idf_component_register(
         "log" 
         "wifi_manager"
         "websocket_manager"
+       "esp_http_server"
+        "esp_http_client"
+        "esp_system"
+        "lwip"
+        "driver"
 )
 

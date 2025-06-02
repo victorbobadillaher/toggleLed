@@ -1,4 +1,4 @@
-idf_component_registers(
+idf_component_register(
     SRC "i2c_helper.c"
     INCLUDE_DIRS "."
     REQUIRES
@@ -6,7 +6,6 @@ idf_component_registers(
         "driver"
         "freertos"
         "esp_system"
-        "esp_err"
         "esp_event"
         "nvs_flash"
         "main"
