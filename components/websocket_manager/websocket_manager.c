@@ -45,8 +45,8 @@ void websocket_manager_task(void *args) {
 
     if (ret != ESP_OK) {
         ESP_LOGE(TAG, "Failed to start WebSocket manager task due to server error. Deleting task.");
-        vTaskDelete(NULL); // Terminate task if server can't start
-        return; // Ensure the function exits
+        vTaskDelete(NULL);
+        return;
     }
 
     // Example: send a message every 5 seconds if a client is connected

@@ -6,6 +6,8 @@
         "gpio.h": "c",
         "task.h": "c",
         "analog_reader.h": "c",
-        "common_headers.h": "c"
+        "common_headers.h": "c",
+        "i2c_master.h": "c",
+        "wifi_manager.h": "c"
     }
 }

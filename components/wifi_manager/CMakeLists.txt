@@ -6,9 +6,14 @@ idf_component_register(
     REQUIRES
         "esp_wifi"      
         "esp_event"     
-        "esp_netif"     
+        "esp_netif"
         "freertos"      
-        "nvs_flash"     
-        "main"
+        "nvs_flash"
         "log"
-)
+        "esp_system"
+        "esp_http_client"
+        "esp_http_server"
+        "lwip"
+        "esp_common"
+        "websocket_manager"
+        )   

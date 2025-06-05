@@ -9,6 +9,17 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "esp_system.h"
+#include "esp_event.h"
+#include "sdkconfig.h"
+#include "esp_http_server.h"
+#include "esp_http_client.h"
+#include "esp_err.h"
+#include "esp_netif.h"
+#include "esp_err.h"
+#include "esp_event_base.h"
+
+
+
 
 // Enum for WebSocket commands (can be moved here if not truly common elsewhere)
 typedef enum {
@@ -19,26 +30,10 @@ typedef enum {
     // Add more commands as needed
 } ws_command_id_t;
 
-/**
- * @brief Initializes and starts the WebSocket server.
- *
- * @return ESP_OK on success, error code otherwise.
- */
+
 esp_err_t websocket_manager_internal_start(void);
 
-/**
- * @brief Task for the WebSocket manager.
- * This task will typically initialize the server and then handle
- * background operations like periodic sending or event waiting.
- *
- * @param args Arguments passed to the task.
- */
+
 void websocket_manager_task(void *args);
 
-/**
- * @brief Sends a text message over WebSocket to the currently connected client.
- *
- * @param message The null-terminated string message to send.
- * @return ESP_OK on success, error code otherwise.
- */
 esp_err_t websocket_manager_send_text(const char *message);

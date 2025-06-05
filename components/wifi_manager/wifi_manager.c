@@ -1,6 +1,5 @@
-
 #include "wifi_manager.h"
-#include "common_headers.h";
+
 
 static const char *TAG = "WIFI_MANAGER";
 
@@ -17,10 +16,10 @@ esp_err_t wifi_manager_init_softapp(EventGroupHandle_t event_group_handle)
     }
 
     // uses the api to set the wifi network interface
-    esp_netif_create_defaul_wifi_ap();
+    esp_netif_create_default_wifi_ap();
 
     // calls the wifi driver for the radio antenna configurations(circuit settings)
-    esp_wifi_init_config_t wifi_config = WIFI_INIT_CONFIG_DEFAULT();
+    wifi_init_config_t wifi_config = WIFI_INIT_CONFIG_DEFAULT();
     
     // Chack if config was able to be set, if not program crashes
     ESP_ERROR_CHECK(esp_wifi_init(&wifi_config));
@@ -50,7 +49,7 @@ esp_err_t wifi_manager_init_softapp(EventGroupHandle_t event_group_handle)
     if(strlen((char*) wifi_settings_config.ap.password) == 0)
     {
     
-        wifi_settings_config.ap.authmode = WIFI_AITH_OPEN;
+        wifi_settings_config.ap.authmode = WIFI_AUTH_OPEN;
     }
 
     // set all previous config settings to the hardware
@@ -63,7 +62,7 @@ esp_err_t wifi_manager_init_softapp(EventGroupHandle_t event_group_handle)
     return ESP_OK;
 }
 
-static void wifi_manager_event_handler(void *arg, esp_event_base_t event_base,int32_t event_id, void *event_data)
+void wifi_manager_event_handler(void *arg, esp_event_base_t event_base,int32_t event_id, void *event_data)
 {
     if(event_base == WIFI_EVENT)
     {
@@ -88,14 +87,12 @@ static void wifi_manager_event_handler(void *arg, esp_event_base_t event_base,in
 
             case WIFI_EVENT_AP_STACONNECTED:
                 wifi_event_ap_staconnected_t* event = (wifi_event_ap_staconnected_t*) event_data;
-
                 ESP_LOGI(TAG, "Station connected to SoftAP: MAC ");
                 break;
 
             case WIFI_EVENT_AP_STADISCONNECTED:
-
-                wifi_event_ap_stadisconnected_t* event = (wifi_event_ap_stadisconnected_t*) event_data;
-                ESP_LOGI(TAG, "Station disconnected from SoftAP: MAC ",MAC2STR(event->mac), event->aid);
+                wifi_event_ap_stadisconnected_t* event_disconnected = (wifi_event_ap_stadisconnected_t*) event_data;
+                ESP_LOGI(TAG, "Station disconnected from SoftAP: MAC ");
                 break;
 
             default:
@@ -105,7 +102,7 @@ static void wifi_manager_event_handler(void *arg, esp_event_base_t event_base,in
 
 }
 
-static void wifi_manager_task(void *pvParameters)
+ void wifi_manager_task(void *pvParameters)
 {
     EventGroupHandle_t wifi_event_group = (EventGroupHandle_t)pvParameters;
 
