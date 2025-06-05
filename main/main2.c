@@ -140,7 +140,6 @@ void app_main(void)
     xTaskCreate(wifi_init_task, "wifi_init_task", 4096, NULL, 5, NULL);
 
     i2c_master_bus_handle_t bus_handle;
-    i2c_master_init_bus(&bus_handle);
 
     xTaskCreatePinnedToCore(check_address_task, "Scan I2C", 4096, (void *)bus_handle, 10, &CheckAddressHandle, 1);
     

@@ -1,5 +1,5 @@
 idf_component_register(
-    SRC "i2c_manager.c"
+    SRCS "i2c_manager.c"
     INCLUDE_DIRS "."
     REQUIRES
         "log"
@@ -8,4 +8,6 @@ idf_component_register(
         "esp_system"
         "esp_event"
         "nvs_flash"
+        "esp_common"
+
 )

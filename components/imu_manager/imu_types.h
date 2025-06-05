@@ -1,7 +1,9 @@
 #pragma once
 
 #include <stdint.h>
-#include "driver/i2c_master.h"
+#include "imu_types.h"
+#include "i2c_manager.h"
+
 
 typedef struct{
     i2c_master_bus_handle_t bus;
@@ -10,7 +12,7 @@ typedef struct{
     uint8_t accel_range;
     uint8_t gyro_range;
     uint8_t filter_bandwidth;
-}imu_driver_config_t;
+}imu_config_t;
 
 typedef struct{
     int16_t x;
@@ -27,7 +29,7 @@ typedef struct{
 typedef struct{
     acceleration_vector_t acceleration;
     gyro_rate_vector_t gyro_rate_data;
-} imu_driver_data_t;
+} imu_data_t;
 
 
 

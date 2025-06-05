@@ -1,19 +1,20 @@
 set(SRC_FILES
+    imu_driver.c
     imu_math.c
     imu_task.c
-    imu_driver.c
 )
 
 idf_component_register(
     SRCS  ${SRC_FILES}
     INCLUDE_DIRS "."
-    REQUIRES
-        "esp_event"    
-        "freertos"
-        "nvs_flash"
-        "log" 
-        "esp_system"
+    REQUIRES  
+        "esp_system" 
+        "esp_common"
+        "log"
         "driver"
         "i2c_manager"
-        "esp_common"
+        "websocket_manager"
         )
+
+
+        

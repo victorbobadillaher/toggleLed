@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/victo/source/repos/toggleLed/components/imu_driver
+# Install script for directory: C:/Users/victo/source/repos/toggleLed/components/imu_manager
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

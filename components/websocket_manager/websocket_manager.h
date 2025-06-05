@@ -30,10 +30,10 @@ typedef enum {
     // Add more commands as needed
 } ws_command_id_t;
 
-
 esp_err_t websocket_manager_internal_start(void);
-
 
 void websocket_manager_task(void *args);
 
 esp_err_t websocket_manager_send_text(const char *message);
+
+int websocket_server_is_connected(void);

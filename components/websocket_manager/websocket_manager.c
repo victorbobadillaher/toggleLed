@@ -85,6 +85,12 @@ esp_err_t websocket_manager_send_text(const char *message) {
     return send_ret;
 }
 
+
+int websocket_server_is_connected(void)
+{
+    return client_fd != -1;
+}
+
 // --- Static (Internal) Functions ---
 
 static esp_err_t websocket_manager_event_handler(httpd_req_t *req) {
@@ -115,51 +121,42 @@ static ws_command_id_t map_ws_command(char *cmd_str) {
 }
 
 static esp_err_t handle_ws_data_frame(httpd_req_t *req) {
-    // Ensure the request is indeed a WebSocket request
-    if (httpd_ws_get_fd_info(req,1) == -1) {
+    if (httpd_ws_get_fd_info(req, 1) == -1) {
         ESP_LOGE(TAG, "Received non-WebSocket request on WebSocket handler.");
         return ESP_FAIL;
     }
 
     httpd_ws_frame_t ws_pkt;
-    memset(&ws_pkt, 0, sizeof(httpd_ws_frame_t)); // Initialize frame structure
-    ws_pkt.payload = NULL; // Crucial for first call to httpd_ws_recv_frame to get length
+    memset(&ws_pkt, 0, sizeof(httpd_ws_frame_t));
+    ws_pkt.payload = NULL;
     ws_pkt.len = 0;
 
-    // First call to httpd_ws_recv_frame to get the length of the incoming frame
-    esp_err_t ret = httpd_ws_recv_frame(req, &ws_pkt,0);
-
+    esp_err_t ret = httpd_ws_recv_frame(req, &ws_pkt, 0);
     if (ret != ESP_OK) {
         ESP_LOGE(TAG, "httpd_ws_recv_frame failed to get frame length: %s", esp_err_to_name(ret));
-        if (httpd_ws_get_fd_info(req,1) == -1) {
+        if (httpd_ws_get_fd_info(req, 1) == -1) {
             ESP_LOGI(TAG, "WebSocket client closed connection, FD: %d", client_fd);
-            client_fd = -1; // Invalidate client FD
+            client_fd = -1;
         }
         return ret;
     }
 
-    // If payload_len is 0, it might be a control frame (e.g., PING/PONG, CLOSE) or an empty data frame
     if (ws_pkt.len == 0) {
-        ESP_LOGI(TAG, "Received empty WebSocket frame or control frame (type: %d).", ws_pkt.type);
-        // Specifically handle client close frame to update client_fd
         if (ws_pkt.type == HTTPD_WS_TYPE_CLOSE) {
-             ESP_LOGI(TAG, "WebSocket client explicitly sent close frame for FD: %d", client_fd);
-             client_fd = -1; // Invalidate client FD
+            ESP_LOGI(TAG, "WebSocket client sent close frame for FD: %d", client_fd);
+            client_fd = -1;
         }
-        return ESP_OK; // No data to process
+        return ESP_OK;
     }
 
-    // Allocate a buffer to hold the received data + 1 for null terminator
-    // IMPORTANT: Make sure this buffer is large enough for your expected max message size
-    // You might want to use a fixed-size buffer or dynamic allocation based on 'ws_pkt.len'
-    uint8_t *buf = (uint8_t *)calloc(1, ws_pkt.len + 1); // +1 for null terminator
+    uint8_t *buf = (uint8_t *)calloc(1, ws_pkt.len + 1);
     if (buf == NULL) {
         ESP_LOGE(TAG, "Failed to allocate memory for WebSocket frame buffer");
         return ESP_ERR_NO_MEM;
     }
-    ws_pkt.payload = buf; // Set payload pointer to our allocated buffer
+    ws_pkt.payload = buf;
 
-    ret = httpd_ws_recv_frame(req, &ws_pkt,0);
+    ret = httpd_ws_recv_frame(req, &ws_pkt, 0);
     if (ret != ESP_OK) {
         ESP_LOGE(TAG, "httpd_ws_recv_frame failed to read frame data: %s", esp_err_to_name(ret));
         free(buf);
@@ -167,7 +164,7 @@ static esp_err_t handle_ws_data_frame(httpd_req_t *req) {
     }
 
     buf[ws_pkt.len] = '\0';
-    // Only process text data frames here for simplicity
+
     if (ws_pkt.type == HTTPD_WS_TYPE_TEXT) {
         ESP_LOGI(TAG, "Received WebSocket text data (FD: %d): '%s'", client_fd, (char *)buf);
 
@@ -180,8 +177,6 @@ static esp_err_t handle_ws_data_frame(httpd_req_t *req) {
                 break;
             case CMD_LIGHT_ON:
                 ESP_LOGI(TAG, "Received CMD_LIGHT_ON. Turning light ON.");
-                // TODO: Implement actual light ON logic here
-                // (e.g., call a GPIO helper function)
                 websocket_manager_send_text("{\"status\":\"Light ON\"}");
                 break;
             case CMD_LIGHT_OFF:
@@ -190,14 +185,13 @@ static esp_err_t handle_ws_data_frame(httpd_req_t *req) {
                 break;
             case CMD_STATUS_REQUEST:
                 ESP_LOGI(TAG, "Received CMD_STATUS_REQUEST. Sending status.");
+                websocket_manager_send_text("{\"status\":\"OK\"}");
                 break;
             default:
-                break; // Should not happen with CMD_UNKNOWN catch
+                break;
         }
     } else {
-        // Handle other frame types if needed (e.g., binary, close, ping, pong)
         ESP_LOGI(TAG, "Received non-text WebSocket frame (type: %d, len: %d)", ws_pkt.type, ws_pkt.len);
-        // You might want to respond to PING with PONG, or handle binary data.
     }
 
     free(buf);

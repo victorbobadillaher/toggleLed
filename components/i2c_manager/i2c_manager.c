@@ -1,8 +1,9 @@
-#include "i2c_helper.h"
-#include "common_headers.h"
+#include "i2c_manager.h"
 
+
+const char *TAG = "I2C_MANAGER";
 // Function for initializing I2C bus
-static void i2c_master_init_bus(i2c_master_bus_handle_t *bus_handle)
+esp_err_t i2c_master_init_bus(i2c_master_bus_handle_t *bus_handle)
 {
     i2c_master_bus_config_t bus_config = {
         .i2c_port = I2C_NUM_0,
@@ -12,11 +13,14 @@ static void i2c_master_init_bus(i2c_master_bus_handle_t *bus_handle)
         .glitch_ignore_cnt = 7,
         .flags.enable_internal_pullup = true,
     };
+
     ESP_ERROR_CHECK(i2c_new_master_bus(&bus_config, bus_handle));
+
+    return ESP_OK;
 }
-<
+
 // Task to scan all I2C addresses
-void check_address_task(void *arg)
+uint8_t check_address_task(void *arg)
 {
     i2c_master_bus_handle_t bus_handle = (i2c_master_bus_handle_t)arg;
     while (1)
@@ -26,8 +30,8 @@ void check_address_task(void *arg)
             esp_err_t err = i2c_master_probe(bus_handle, addr, I2C_MASTER_TIMEOUT_MS);
             if (err == ESP_OK)
             {
-                
                 ESP_LOGI(TAG, "Found I2C device at address: 0x%02X", addr);
+                return addr;
             }
         }
         ESP_LOGI(TAG, "I2C scan complete");

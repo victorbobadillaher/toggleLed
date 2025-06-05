@@ -83,5 +83,6 @@ C:/Users/victo/source/repos/toggleLed/build/esp-idf/spiffs/libspiffs.a
 C:/Users/victo/source/repos/toggleLed/build/esp-idf/wifi_provisioning/libwifi_provisioning.a
 C:/Users/victo/source/repos/toggleLed/build/esp-idf/websocket_manager/libwebsocket_manager.a
 C:/Users/victo/source/repos/toggleLed/build/esp-idf/wifi_manager/libwifi_manager.a
+C:/Users/victo/source/repos/toggleLed/build/esp-idf/i2c_manager/libi2c_manager.a
+C:/Users/victo/source/repos/toggleLed/build/esp-idf/imu_manager/libimu_manager.a
 C:/Users/victo/source/repos/toggleLed/build/esp-idf/main/libmain.a
-C:/Users/victo/source/repos/toggleLed/build/esp-idf/imu_driver/libimu_driver.a

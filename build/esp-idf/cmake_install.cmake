@@ -559,16 +559,16 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/victo/source/repos/toggleLed/build/esp-idf/main/cmake_install.cmake")
-endif()
-
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for the subdirectory.
   include("C:/Users/victo/source/repos/toggleLed/build/esp-idf/i2c_manager/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/victo/source/repos/toggleLed/build/esp-idf/imu_driver/cmake_install.cmake")
+  include("C:/Users/victo/source/repos/toggleLed/build/esp-idf/imu_manager/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("C:/Users/victo/source/repos/toggleLed/build/esp-idf/main/cmake_install.cmake")
 endif()
 
