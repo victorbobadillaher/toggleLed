@@ -1,4 +1,4 @@
-#include <stdio.h>
+/*#include <stdio.h>
 #include<freertos/FreeRTOS.h>
 #include<freertos/task.h>
 #include <string.h>
@@ -35,4 +35,4 @@ void app_main(void)
         gpio_blink(LED_GPIO_PIN,100,1);
         gpio_blink(LED_GPIO_PIN,100,0);
     }
-}
+}*/

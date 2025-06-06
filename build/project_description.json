@@ -1,7 +1,7 @@
 {
     "version":            "1.2",
     "project_name":       "toggleLed",
-    "project_version":    "4eb06be-dirty",
+    "project_version":    "7e21198-dirty",
     "project_path":       "C:/Users/victo/source/repos/toggleLed",
     "idf_path":           "C:/Users/victo/esp/v5.4.1/esp-idf",
     "build_dir":          "C:/Users/victo/source/repos/toggleLed/build",
@@ -355,7 +355,7 @@
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "file": "C:/Users/victo/source/repos/toggleLed/build/esp-idf/esp_driver_i2c/libesp_driver_i2c.a",
-            "sources": [ "C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_driver_i2c/i2c_master.c", "C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_driver_i2c/i2c_common.c", "C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_driver_i2c/i2c_slave.c" ],
+            "sources": [ "C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_driver_i2c/i2c_master.c", "C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_driver_i2c/i2c_common.c", "C:/Users/victo/esp/v5.4.1/esp-idf/components/esp_driver_i2c/i2c_slave_v2.c" ],
             "include_dirs": [ "include" ]
         },
         "esp_driver_i2s": {
@@ -1195,7 +1195,7 @@
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "file": "C:/Users/victo/source/repos/toggleLed/build/esp-idf/main/libmain.a",
-            "sources": [ "C:/Users/victo/source/repos/toggleLed/main/main.c", "C:/Users/victo/source/repos/toggleLed/main/gpio_helper.c", "C:/Users/victo/source/repos/toggleLed/main/i2c_helper.c", "C:/Users/victo/source/repos/toggleLed/main/sensor_helper.c", "C:/Users/victo/source/repos/toggleLed/main/websocket_server.c", "C:/Users/victo/source/repos/toggleLed/main/wifi_helper.c" ],
+            "sources": [ "C:/Users/victo/source/repos/toggleLed/main/main.c", "C:/Users/victo/source/repos/toggleLed/main/main1.c", "C:/Users/victo/source/repos/toggleLed/main/analog_reader.c", "C:/Users/victo/source/repos/toggleLed/main/gpio_helper.c", "C:/Users/victo/source/repos/toggleLed/main/wifi_helper.c", "C:/Users/victo/source/repos/toggleLed/main/websocket_server.c" ],
             "include_dirs": [ "." ]
         },
         "mbedtls": {
